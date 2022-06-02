@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Island+Moments&family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  behavior: "smooth";
+}
+table {
+  margin: auto;
+  margin-top: 2rem;
+  background: $white-color;
+
+  @include box_shadow(0.2);
+
+  td,
+  th {
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    text-align: center;
+    @include tablet {
+      font-size: 12px;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  // .last__row {
+  //   @include flex(center, space-around);
+  // }
+  thead {
+    color: $white-color;
+    background: $primary-color;
+    font-weight: 500;
+    border-bottom: 2px solid #333;
+  }
+  tbody {
+    tr {
+      &:hover {
+        background: $third-color;
+      }
+    }
+  }
+  .status {
+    font-weight: 500;
+  }
+  .bx-trash {
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+  .bx-edit-alt,
+  .view__details {
+    cursor: pointer;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+.table > :not(:first-child) {
+  border-top: 0;
+}
+a {
+  color: unset;
+  text-decoration: none;
+  display: inline-block;
+  max-width: 100%;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+p {
+  display: inline-block;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin: 5px 10px;
+}
+ul,
+li {
+  list-style-type: none;
+  display: block;
+  margin: 0;
+  padding: 0.2rem;
+}
+
+img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+input {
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.selected {
+  color: $primary-color;
+}
+.btn {
+  color: $white-color;
+  background: $black-color;
+  @include tablet {
+    font-size: 12px;
+  }
+  &:hover {
+    color: $white-color;
+    background: $primary-color;
+  }
+}
+.hidden {
+  display: none !important;
+  transform: scaleY(0);
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($primary-color, 0.5);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  -webkit-animation: animation 0.5s ease;
+  animation: animation 0.5s ease;
+  .modal__close {
+    color: $black-color !important;
+    i:hover {
+      cursor: pointer;
+      color: $four-color !important;
+    }
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-align: right;
+    color: $white-color;
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+  }
+}
+.strong {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    height: 1.2rem;
+    width: 2px;
+    background: $white-color;
+  }
+}
+
+// hover style one
+.hover__style__one {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: $primary-color;
+    z-index: 10;
+  }
+}
+
+// custom css input type file
+#custom__input__file__form__add {
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+}
+.label__custom__input__file__form__add {
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 16px;
+  &:hover {
+    background: $primary-color;
+    color: $white-color;
+  }
+}
+.delete__filter {
+  @include tablet {
+    margin-bottom: 1rem;
+    font-size: 0.8rem !important;
+  }
+}
+// ========animation===============
+@-webkit-keyframes animation {
+  from {
+    transform: scale (0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes animation {
+  from {
+    transform: scale (0);
+    transition: all 0.3s ease;
+  }
+  to {
+    transform: scale(1);
+  }
+}

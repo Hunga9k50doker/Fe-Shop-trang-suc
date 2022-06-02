@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7f1744e0.css",
+    "main.js": "/static/js/main.e6409659.js",
+    "static/media/boxicons.svg": "/static/media/boxicons.17f6cb4eef77f07f2caa.svg",
+    "static/media/boxicons.eot": "/static/media/boxicons.dfc882ec9689f820c7c9.eot",
+    "static/media/boxicons.woff": "/static/media/boxicons.1a7e2e2bf3a855e674d4.woff",
+    "static/media/boxicons.ttf": "/static/media/boxicons.22afc8ee5cfc540cddff.ttf",
+    "static/media/bst-timeless-diamond.jpg": "/static/media/bst-timeless-diamond.ca872c2c63b7d6b9668e.jpg",
+    "static/media/theme_diamond.svg": "/static/media/theme_diamond.b7c01dbde65bbcfd5a5c3d9d2ffb9a1d.svg",
+    "static/media/banner.png": "/static/media/banner.6dea251d8270b25bdb8d.png",
+    "static/media/boxicons.woff2": "/static/media/boxicons.60f603cccbdff82a523c.woff2",
+    "static/media/dici_banner_1_opt.jpg": "/static/media/dici_banner_1_opt.05f3ee99da6d1ca53144.jpg",
+    "static/media/dici_sld_1_rings_opt.png": "/static/media/dici_sld_1_rings_opt.175b1ed317a303ad0778.png",
+    "static/media/gg.png": "/static/media/gg.25d7f4f67a7636ebe9af.png",
+    "static/media/Rectangle 4320 (1).png": "/static/media/Rectangle 4320 (1).9de00161ad993445f47c.png",
+    "static/media/Rectangle 4320 (2).png": "/static/media/Rectangle 4320 (2).ec26cc81faaab2c670b9.png",
+    "static/media/sub_banner.jpg": "/static/media/sub_banner.73baabd2ccec9c9ef144.jpg",
+    "static/media/Rectangle 4320 (6).png": "/static/media/Rectangle 4320 (6).3ba590a21f38d3f7ecdb.png",
+    "static/media/Rectangle 4320.png": "/static/media/Rectangle 4320.a68d200f17cebee9be1c.png",
+    "static/media/Rectangle 4320 (7).png": "/static/media/Rectangle 4320 (7).18b0cec2ac2a5669e9aa.png",
+    "static/media/Rectangle 4320 (3).png": "/static/media/Rectangle 4320 (3).632911b96832ddfc1934.png",
+    "static/media/Rectangle 4320 (5).png": "/static/media/Rectangle 4320 (5).80af9178beedd80f5794.png",
+    "static/media/gnxmxmw000109-nhan-vang-trang-10k-dinh-da-ecz-swarovski-pnj.png": "/static/media/gnxmxmw000109-nhan-vang-trang-10k-dinh-da-ecz-swarovski-pnj.a6b4f90fc8c304ca9219.png",
+    "static/media/gn0000y000203-nhan-kim-tien-vang-y-18k-pnj.png": "/static/media/gn0000y000203-nhan-kim-tien-vang-y-18k-pnj.0ef7c87a777c129db2c6.png",
+    "static/media/Rectangle 4320 (4).png": "/static/media/Rectangle 4320 (4).15ef36d964542a167169.png",
+    "index.html": "/index.html",
+    "static/media/Polygon 1.svg": "/static/media/Polygon 1.59922f6b9941640612df7ba04d048944.svg",
+    "static/media/Polygon 2.svg": "/static/media/Polygon 2.f9c410faf8106925cf391fb99d19efcb.svg",
+    "main.7f1744e0.css.map": "/static/css/main.7f1744e0.css.map",
+    "main.e6409659.js.map": "/static/js/main.e6409659.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f1744e0.css",
+    "static/js/main.e6409659.js"
+  ]
+}
