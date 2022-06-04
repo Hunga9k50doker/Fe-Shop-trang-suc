@@ -72,7 +72,6 @@ export default function Product() {
       rating: 5,
     });
   };
-  console.log(reviews);
   return (
     <Helmet title="Chi tiết Sản phẩm">
       <div className="product">
