@@ -19,11 +19,12 @@ import {
 } from "./constant";
 
 export const AuthContext = createContext();
-
+let displayNameStorage = localStorage.getItem("token_kithuat");
+displayNameStorage = JSON.parse(displayNameStorage);
 export const AuthContextProvider = ({ children }) => {
   let [authState, dispatch] = useReducer(authReducer, {
     userAuth: null,
-    isLoginAuth: false,
+    isLoginAuth: displayNameStorage ? true : false,
     user: null,
     isAuthenticated: false,
     loading: true,
@@ -75,6 +76,7 @@ export const AuthContextProvider = ({ children }) => {
     const facebook_provider = new FacebookAuthProvider();
     const github_provider = new GithubAuthProvider();
     const auth = getAuth(Firebase);
+
     switch (type) {
       case "GOOGLE_LOGIN":
         await signInWithPopup(auth, google_provider)
@@ -82,8 +84,12 @@ export const AuthContextProvider = ({ children }) => {
             if (result.user) {
               localStorage.setItem(
                 LOCAL_STORAGE_TOKEN_NAME,
-                result.user.accessToken
+                JSON.stringify({
+                  token: result.user.accessToken,
+                  displayName: result.user.displayName,
+                })
               );
+
               authState.userAuth = result.user;
               authState.isLoginAuth = true;
 
@@ -104,7 +110,10 @@ export const AuthContextProvider = ({ children }) => {
             if (result.user) {
               localStorage.setItem(
                 LOCAL_STORAGE_TOKEN_NAME,
-                result.user.accessToken
+                JSON.stringify({
+                  token: result.user.accessToken,
+                  displayName: result.user.displayName,
+                })
               );
               authState.userAuth = result.user;
               authState.isLoginAuth = true;
@@ -126,7 +135,10 @@ export const AuthContextProvider = ({ children }) => {
             if (result.user) {
               localStorage.setItem(
                 LOCAL_STORAGE_TOKEN_NAME,
-                result.user.accessToken
+                JSON.stringify({
+                  token: result.user.accessToken,
+                  displayName: result.user.displayName,
+                })
               );
               authState.userAuth = result.user;
               authState.isLoginAuth = true;
@@ -183,6 +195,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
+    authState.isLoginAuth = false;
     await loadUser();
   };
 

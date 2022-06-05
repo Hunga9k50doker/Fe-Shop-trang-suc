@@ -11,6 +11,8 @@ export default function Header() {
   const [isRegister, setIsRegister] = useState(false);
   const [isActiveForm, setIsActiveForm] = useState(false);
   const { logout } = useContext(AuthContext);
+  let displayNameStorage = localStorage.getItem("token_kithuat");
+  displayNameStorage = JSON.parse(displayNameStorage);
 
   const {
     authState: { user, loading, isAuthenticated, isLoginAuth, userAuth },
@@ -22,14 +24,14 @@ export default function Header() {
     telephone: "",
   });
   useEffect(() => {
-    if (user)
+    if (user || userAuth)
       setData({
         ...data,
-        name: user.name,
+        name: user.name || userAuth.displayName,
         address: user.address,
         telephone: user.telephone,
       });
-  }, [user]);
+  }, [user, userAuth]);
   const handleChange = (e) => {
     const newData = { ...data };
     newData[e.target.className] = e.target.value;
@@ -101,11 +103,17 @@ export default function Header() {
         ) : (
           <li className="my__account">
             <i className="bx bxs-user-circle"></i>
-            <p>
-              {user.name || userAuth.name
-                ? user.name || userAuth.name
-                : "NguyenHung2310"}
-            </p>
+            {displayNameStorage && displayNameStorage.displayName ? (
+              displayNameStorage.displayName
+            ) : (
+              <p>
+                {user && user.name
+                  ? user.name
+                  : userAuth.displayName
+                  ? userAuth.displayName
+                  : "NguyenHung2310"}
+              </p>
+            )}
             <ul className="my__account__list">
               <Link to="/don-hang-cua-ban">
                 <li className="my__account__item">
