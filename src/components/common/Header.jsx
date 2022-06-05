@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../provider/context/AuthContext";
@@ -35,6 +35,7 @@ export default function Header() {
     newData[e.target.className] = e.target.value;
     setData(newData);
   };
+  const navigate = useNavigate();
   useEffect(
     () => {
       const res = document.querySelector(".label__register");
@@ -124,6 +125,7 @@ export default function Header() {
                 className="my__account__item"
                 onClick={() => {
                   logout();
+                  navigate("/");
                 }}
               >
                 <i className="bx bx-log-out-circle me-2"></i>

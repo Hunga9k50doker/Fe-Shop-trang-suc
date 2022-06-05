@@ -54,9 +54,8 @@
   @include flex(center, center);
   padding: 2rem;
   flex-direction: column;
-  background-size: contain;
   background-repeat: no-repeat;
-
+  background-size: 100% auto;
   .form__input {
     border-radius: 4px;
   }

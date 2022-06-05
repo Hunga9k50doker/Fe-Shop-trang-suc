@@ -15,7 +15,9 @@ const FormContact = (props) => {
     <form
       action="#"
       className="form  form__contact"
-      style={{ background: `url(${props.url})` }}
+      style={{
+        backgroundImage: `url(${props.url})`,
+      }}
     >
       <h3 className="form__title"> {props.title}</h3>
       <div className="form__body">
@@ -101,6 +103,7 @@ const FormLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(user);
+   
   };
 
   return (

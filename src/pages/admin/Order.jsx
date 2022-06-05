@@ -40,6 +40,7 @@ const dataTable_01 = [
 
 ChartJS.register(ArcElement, Title, Tooltip, Legend);
 const Selection = ({ product }) => {
+  const [satus, setSatus] = useState("");
   const selectedRef = useRef(null);
   const { changeStatusOrder } = useContext(OrderContext);
   const handleChange = () => {
@@ -52,14 +53,19 @@ const Selection = ({ product }) => {
         changeStatusOrder("Đã giao", product._id);
       } else {
         selectedRef.current.style.color = "black";
-        changeStatusOrder("Xác nhận", product._id);
+        changeStatusOrder("Chờ xác nhận", product._id);
       }
     }
   };
   return (
     <select
-      style={{ fontWeight: "bold" }}
-      onChange={handleChange}
+      style={{ fontWeight: "bold", textAlign: "center" }}
+      onChange={() => {
+        handleChange();
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      }}
       ref={selectedRef}
       value={
         product.status === "Đang giao"
@@ -70,7 +76,7 @@ const Selection = ({ product }) => {
       }
     >
       <option value="0" style={{ color: "black" }}>
-        Xác nhận
+        Chờ xác nhận
       </option>
       <option style={{ color: "red" }} value="1">
         Đang giao

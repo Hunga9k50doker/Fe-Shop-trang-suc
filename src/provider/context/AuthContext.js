@@ -56,6 +56,9 @@ export const AuthContextProvider = ({ children }) => {
       if (response.data.success) {
         localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.token);
         toast.success("Đăng nhập thành công!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } else {
         toast.error(`Đăng nhập thất bại: ${response.data.message}`);
       }
@@ -83,6 +86,7 @@ export const AuthContextProvider = ({ children }) => {
               );
               authState.userAuth = result.user;
               authState.isLoginAuth = true;
+
               toast.success("Đăng nhập thành công!");
             }
             loadUser();
