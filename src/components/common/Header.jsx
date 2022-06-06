@@ -24,14 +24,14 @@ export default function Header() {
     telephone: "",
   });
   useEffect(() => {
-    if (user || userAuth)
+    if (user)
       setData({
         ...data,
-        name: user.name || userAuth.displayName,
+        name: user.name,
         address: user.address,
         telephone: user.telephone,
       });
-  }, [user, userAuth]);
+  }, [user]);
   const handleChange = (e) => {
     const newData = { ...data };
     newData[e.target.className] = e.target.value;
@@ -103,8 +103,9 @@ export default function Header() {
         ) : (
           <li className="my__account">
             <i className="bx bxs-user-circle"></i>
+
             {displayNameStorage && displayNameStorage.displayName ? (
-              displayNameStorage.displayName
+              <p>{displayNameStorage.displayName}</p>
             ) : (
               <p>
                 {user && user.name

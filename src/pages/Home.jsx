@@ -69,7 +69,7 @@ export default function Home() {
           </div>
 
           <div className="row m-4">
-            {data.length > 0 && <InfinityList props={item} />}
+            {data && data.length > 0 && <InfinityList props={item} />}
           </div>
         </div>
         <FormContact
