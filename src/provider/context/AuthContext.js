@@ -21,7 +21,6 @@ import {
 export const AuthContext = createContext();
 
 let displayNameStorage = localStorage.getItem("token_kithuat_auth");
-console.log(displayNameStorage);
 if (displayNameStorage) {
   displayNameStorage = JSON.parse(displayNameStorage);
 }

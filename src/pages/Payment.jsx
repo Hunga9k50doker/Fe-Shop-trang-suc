@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { toast } from "react-toastify";
+import { PayPalButton } from "react-paypal-button-v2";
 import { CartContext } from "../provider/context/CartContext";
 import { AuthContext } from "../provider/context/AuthContext";
 import { OrderContext } from "../provider/context/OrderContext";
@@ -166,6 +167,24 @@ export default function Payment() {
                         content="Xác nhận thanh toán"
                         classNameBtn="m-2"
                         onClick={() => handlePay()}
+                      />
+                      <br />
+                      hoặc
+                      <PayPalButton
+                        amount="0.01"
+                        onSuccess={(details, data) => {
+                          alert(
+                            "Transaction completed by " +
+                              details.payer.name.given_name
+                          );
+
+                          return fetch("/paypal-transaction-complete", {
+                            method: "post",
+                            body: JSON.stringify({
+                              orderID: data.orderID,
+                            }),
+                          });
+                        }}
                       />
                     </td>
                   </tr>
