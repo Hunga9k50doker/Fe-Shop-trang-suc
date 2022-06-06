@@ -19,8 +19,12 @@ import {
 } from "./constant";
 
 export const AuthContext = createContext();
-let displayNameStorage = localStorage.getItem("token_kithuat");
-displayNameStorage = JSON.parse(displayNameStorage);
+
+let displayNameStorage = localStorage.getItem("token_kithuat_auth");
+console.log(displayNameStorage);
+if (displayNameStorage) {
+  displayNameStorage = JSON.parse(displayNameStorage);
+}
 export const AuthContextProvider = ({ children }) => {
   let [authState, dispatch] = useReducer(authReducer, {
     userAuth: null,
@@ -83,7 +87,7 @@ export const AuthContextProvider = ({ children }) => {
           .then((result) => {
             if (result.user) {
               localStorage.setItem(
-                LOCAL_STORAGE_TOKEN_NAME,
+                "token_kithuat_auth",
                 JSON.stringify({
                   token: result.user.accessToken,
                   displayName: result.user.displayName,
@@ -109,7 +113,7 @@ export const AuthContextProvider = ({ children }) => {
           .then((result) => {
             if (result.user) {
               localStorage.setItem(
-                LOCAL_STORAGE_TOKEN_NAME,
+                "token_kithuat_auth",
                 JSON.stringify({
                   token: result.user.accessToken,
                   displayName: result.user.displayName,
@@ -134,7 +138,7 @@ export const AuthContextProvider = ({ children }) => {
           .then((result) => {
             if (result.user) {
               localStorage.setItem(
-                LOCAL_STORAGE_TOKEN_NAME,
+                "token_kithuat_auth",
                 JSON.stringify({
                   token: result.user.accessToken,
                   displayName: result.user.displayName,
@@ -195,6 +199,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
+    localStorage.removeItem("token_kithuat_auth");
     authState.isLoginAuth = false;
     await loadUser();
   };

@@ -11,7 +11,7 @@ export default function Header() {
   const [isRegister, setIsRegister] = useState(false);
   const [isActiveForm, setIsActiveForm] = useState(false);
   const { logout } = useContext(AuthContext);
-  let displayNameStorage = localStorage.getItem("token_kithuat");
+  let displayNameStorage = localStorage.getItem("token_kithuat_auth");
   displayNameStorage = JSON.parse(displayNameStorage);
 
   const {
