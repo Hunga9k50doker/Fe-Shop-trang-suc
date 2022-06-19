@@ -52,14 +52,7 @@ const CardItem = ({ item }) => {
         }
         className={`card__icon__like bx ${isFav ? "bxs-heart" : "bx-heart"}`}
       ></i>
-      {/* <i
-        title="Thêm vào giỏ hàng"
-        className="card__icon__add__cart bx bx-plus"
-        onClick={(e) => {
-          e.preventDefault();
-          handleEvents.addToCart(e._id, e);
-        }}
-      ></i> */}
+
       <div className="card__item__header">
         {imgsUrl.length > 0 && (
           <img src={`../../images/${imgsUrl[0]}`} alt="Ảnh" />
