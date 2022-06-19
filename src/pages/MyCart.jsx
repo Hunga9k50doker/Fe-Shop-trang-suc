@@ -127,11 +127,15 @@ export default function MyCart() {
                         Number(price)
                       )} VND`}</h4>
                       <Link to="/thanh-toan">
-                        <Button content="Thanh toán" classNameBtn="m-2" />
+                        <Button content="Đặt hàng" classNameBtn="m-2" />
                       </Link>
                       <Link to="/trang-suc/nhan/">
                         <Button content="Tiếp tục mua hàng" />
                       </Link>
+                      <br />
+                      <p>
+                        Bạn có thể chọn phương thức thanh toán sau khi đặt hàng{" "}
+                      </p>  
                     </td>
                   </tr>
                 </tbody>

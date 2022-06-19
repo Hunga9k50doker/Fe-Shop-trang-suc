@@ -5,10 +5,10 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  GithubAuthProvider,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { Firebase } from "../../Firebase/firebase";
+
+import { Firebase, Db } from "../../Firebase/firebase";
 import { setAuthToken } from "../../utils/setAuthToken";
 import authReducer from "../reducer/AuthReducer";
 import {
@@ -74,12 +74,39 @@ export const AuthContextProvider = ({ children }) => {
       });
     }
   };
+
+  // ===============Aoth2=============
+
+  // async function addUserData(
+  //   userId,
+  //   name,
+  //   username,
+  //   email,
+  //   telephone,
+  //   address,
+  //   role
+  // ) {
+  //   const docData = {
+  //     userId: userId,
+  //     username: username,
+  //     name: name,
+  //     telephone: telephone,
+  //     address: address,
+  //     role: role,
+  //     email: email,
+  //   };
+  //   try {
+  //     const docRef = await addDoc(collection(Db, "users"), docData);
+  //     console.log("Document written with ID: ", docRef);
+  //     console.log("Documen", docData);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  // }
   const LoginWithFirebase = async (type) => {
     const google_provider = new GoogleAuthProvider();
     const facebook_provider = new FacebookAuthProvider();
-    const github_provider = new GithubAuthProvider();
     const auth = getAuth(Firebase);
-
     switch (type) {
       case "GOOGLE_LOGIN":
         await signInWithPopup(auth, google_provider)
@@ -122,7 +149,9 @@ export const AuthContextProvider = ({ children }) => {
               authState.isLoginAuth = true;
               toast.success("Đăng nhập thành công!");
             }
-            loadUser();
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           })
           .catch((error) => {
             console.log(error.message);
@@ -132,31 +161,7 @@ export const AuthContextProvider = ({ children }) => {
             });
           });
         break;
-      case "GITHUB_LOGIN":
-        await signInWithPopup(auth, github_provider)
-          .then((result) => {
-            if (result.user) {
-              localStorage.setItem(
-                "token_kithuat_auth",
-                JSON.stringify({
-                  token: result.user.accessToken,
-                  displayName: result.user.displayName,
-                })
-              );
-              authState.userAuth = result.user;
-              authState.isLoginAuth = true;
-              toast.success("Đăng nhập thành công!");
-            }
-            loadUser();
-          })
-          .catch((error) => {
-            console.log(error.message);
-            dispatch({
-              type: LOAD_USER,
-              payload: null,
-            });
-          });
-        break;
+
       default:
         break;
     }

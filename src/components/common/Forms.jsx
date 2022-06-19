@@ -8,7 +8,7 @@ import { CardItem } from "./CardItem";
 import { AuthContext } from "../../provider/context/AuthContext";
 import { ProductContext } from "../../provider/context/ProductContext";
 
-import { theme_fb, theme_gg, theme_gh } from "../../assets/img";
+import { theme_fb, theme_gg } from "../../assets/img";
 
 const FormContact = (props) => {
   return (
@@ -103,7 +103,6 @@ const FormLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(user);
-   
   };
 
   return (
@@ -156,13 +155,23 @@ const FormLogin = () => {
                 disabled={true}
                 src={theme_fb}
                 alt=""
-                onClick={() => LoginWithFirebase("FACEBOOK_LOGIN")}
+                onClick={() => {
+                  alert(
+                    "Dữ liệu người dùng cho phần đăng nhập bên thứ 3 chưa được setup, bạn có muốn tiếp tục?"
+                  );
+                  LoginWithFirebase("FACEBOOK_LOGIN");
+                }}
               />
             ) : (
               <i
                 disabled={true}
                 className="bx bxl-facebook-circle"
-                onClick={() => LoginWithFirebase("FACEBOOK_LOGIN")}
+                onClick={() => {
+                  alert(
+                    "Dữ liệu người dùng cho phần đăng nhập bên thứ 3 chưa được setup, bạn có muốn tiếp tục?"
+                  );
+                  LoginWithFirebase("FACEBOOK_LOGIN");
+                }}
               ></i>
             )}
             {theme_gg ? (
@@ -170,27 +179,23 @@ const FormLogin = () => {
                 disabled={true}
                 src={theme_gg}
                 alt=""
-                onClick={() => LoginWithFirebase("GOOGLE_LOGIN")}
+                onClick={() => {
+                  alert(
+                    "Dữ liệu người dùng cho phần đăng nhập bên thứ 3 chưa được setup, bạn có muốn tiếp tục?"
+                  );
+                  LoginWithFirebase("GOOGLE_LOGIN");
+                }}
               />
             ) : (
               <i
                 disabled={true}
                 className="bx bxl-google"
-                onClick={() => LoginWithFirebase("GOOGLE_LOGIN")}
-              ></i>
-            )}
-            {theme_gh ? (
-              <img
-                disabled={true}
-                src={theme_gh}
-                alt=""
-                onClick={() => LoginWithFirebase("GITHUB_LOGIN")}
-              />
-            ) : (
-              <i
-                disabled={true}
-                class="bx bxl-github"
-                onClick={() => LoginWithFirebase("GITHUB_LOGIN")}
+                onClick={() => {
+                  alert(
+                    "Dữ liệu người dùng cho phần đăng nhập bên thứ 3 chưa được setup, bạn có muốn tiếp tục?"
+                  );
+                  LoginWithFirebase("GOOGLE_LOGIN");
+                }}
               ></i>
             )}
           </li>

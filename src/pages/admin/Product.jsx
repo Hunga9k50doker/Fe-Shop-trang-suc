@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import { toast } from "react-toastify";
 import moment from "moment";
+import axios from "axios";
+
 import Helmet from "../../components/common/Helmet";
 import Table from "../../components/common/Table";
 import Button from "../../components/common/Button";
@@ -9,8 +11,7 @@ import Modal from "../../components/common/Modal";
 import { numberWithCommas } from "../../utils/utils";
 import { FormEdit, FormAdd } from "../../components/common/Forms";
 import { ProductContext } from "../../provider/context/ProductContext";
-import axios from "axios";
-
+import Pagination from "../../components/common/Pagination";
 // data render ui for color, gift
 const dataInput = [
   {
@@ -279,6 +280,7 @@ const ProductAdmin = () => {
     },
   };
 
+  const [currentItems, setCurrentItems] = useState(products);
   return (
     <Helmet title="Quản lý sản phẩm">
       <div className="product__admin">
@@ -883,63 +885,72 @@ const ProductAdmin = () => {
                 )}
 
                 {/* =============end update product ================== */}
-
-                <table className="p-4">
-                  <thead>
-                    <tr>
-                      <td>STT</td>
-                      <td>Hình ảnh</td>
-                      <td>Tên sản phẩm</td>
-                      <td>Giá</td>
-                      <td>Thời gian cập nhật</td>
-                      <td>Chỉnh sửa</td>
-                      <td>Xóa</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {products
-                      .filter((val) => {
-                        if (searchItem === "") {
-                          return val;
-                        } else if (
-                          val.name
-                            .toLowerCase()
-                            .includes(searchItem.toLowerCase())
-                        ) {
-                          return val;
-                        }
-                      })
-                      .map((e, id) => (
-                        <tr key={id}>
-                          <td>{id + 1}</td>
-                          <td>
-                            <img src={`../../images/${e.imgsUrl[0]}`} alt="" />
-                          </td>
-                          <td>{e.name}</td>
-                          <td>{numberWithCommas(e.price)}</td>
-                          <td>{moment(e.updatedAt).format("LLL")}</td>
-                          <td>
-                            <i
-                              className="bx bx-edit-alt"
-                              onClick={() => {
-                                setIsActiveForm(true);
-                                setCurrentId(e._id);
-                              }}
-                            ></i>
-                          </td>
-                          <td>
-                            <i
-                              className="bx bx-trash"
-                              onClick={() => {
-                                deleteProducts(e._id);
-                                notifyDel();
-                              }}
-                            ></i>
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+                <Pagination
+                  itemsPerPage={10}
+                  data={products}
+                  currentItems={currentItems}
+                  setCurrentItems={setCurrentItems}
+                >
+                  <table className="p-4">
+                    <thead>
+                      <tr>
+                        <td>STT</td>
+                        <td>Hình ảnh</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Giá</td>
+                        <td>Thời gian cập nhật</td>
+                        <td>Chỉnh sửa</td>
+                        <td>Xóa</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {products
+                        .filter((val) => {
+                          if (searchItem === "") {
+                            return val;
+                          } else if (
+                            val.name
+                              .toLowerCase()
+                              .includes(searchItem.toLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map((e, id) => (
+                          <tr key={id}>
+                            <td>{id + 1}</td>
+                            <td>
+                              <img
+                                src={`../../images/${e.imgsUrl[0]}`}
+                                alt=""
+                              />
+                            </td>
+                            <td>{e.name}</td>
+                            <td>{numberWithCommas(e.price)}</td>
+                            <td>{moment(e.updatedAt).format("LLL")}</td>
+                            <td>
+                              <i
+                                className="bx bx-edit-alt"
+                                onClick={() => {
+                                  setIsActiveForm(true);
+                                  setCurrentId(e._id);
+                                }}
+                              ></i>
+                            </td>
+                            <td>
+                              <i
+                                className="bx bx-trash"
+                                onClick={() => {
+                                  deleteProducts(e._id);
+                                  notifyDel();
+                                }}
+                              ></i>
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </Pagination>
               </Table>
             </div>
           </div>

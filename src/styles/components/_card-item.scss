@@ -10,7 +10,8 @@
   @include flex(center, center);
   flex-direction: column;
   &:hover {
-    .card__icon__like {
+    .card__icon__like,
+    .card__icon__add__cart {
       color: $black-color;
     }
     img {
@@ -27,6 +28,21 @@
     padding: 5px 5px 0 0;
     top: 0;
     right: 0;
+    font-size: 1.2rem;
+    &:hover {
+      color: $primary-color !important;
+    }
+  }
+  .card__icon__add__cart {
+    color: transparent;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    z-index: 60;
+    text-align: left;
+    padding: 5px 5px 0 0;
+    top: 0;
+    left: 0;
     font-size: 1.2rem;
     &:hover {
       color: $primary-color !important;

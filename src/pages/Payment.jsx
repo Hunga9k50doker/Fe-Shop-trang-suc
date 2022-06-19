@@ -103,6 +103,8 @@ export default function Payment() {
                 type="text"
                 key={"phone"}
                 required="required"
+                minLength="9"
+                maxLength="11"
                 defaultValue={dataShip.phoneNumber}
                 name="phoneNumber"
                 onChange={handleChange}

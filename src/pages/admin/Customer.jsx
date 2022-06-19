@@ -41,9 +41,6 @@ const CustomerAdmin = () => {
                       if (searchItem === "") {
                         return val;
                       } else if (
-                        val.phoneNumber
-                          .toLowerCase()
-                          .includes(searchItem.toLowerCase()) ||
                         val.name
                           .toLowerCase()
                           .includes(searchItem.toLowerCase())

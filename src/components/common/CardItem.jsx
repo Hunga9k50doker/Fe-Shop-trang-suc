@@ -6,14 +6,16 @@ import {
 
 import { numberWithCommas } from "../../utils/utils";
 import { FavouriteContext } from "../../provider/context/FavouriteContext";
+import { CartContext } from "../../provider/context/CartContext";
 
 const CardItem = ({ item }) => {
+  const quantity = 1;
   const {
     addProductToFavourite,
     deleteOneProductFromFavourite,
     favouriteState,
   } = useContext(FavouriteContext);
-
+  const { addProductToCart } = useContext(CartContext);
   const { imgsUrl, name, price } = item;
   const heartIconRef = useRef(null);
   const cardRef = useRef(null);
@@ -34,6 +36,9 @@ const CardItem = ({ item }) => {
       setLike(false);
       deleteOneProductFromFavourite({ id: item._id });
     },
+    addToCart: (e, product) => {
+      addProductToCart({ e, quantity }, product);
+    },
   };
 
   return (
@@ -47,6 +52,14 @@ const CardItem = ({ item }) => {
         }
         className={`card__icon__like bx ${isFav ? "bxs-heart" : "bx-heart"}`}
       ></i>
+      {/* <i
+        title="Thêm vào giỏ hàng"
+        className="card__icon__add__cart bx bx-plus"
+        onClick={(e) => {
+          e.preventDefault();
+          handleEvents.addToCart(e._id, e);
+        }}
+      ></i> */}
       <div className="card__item__header">
         {imgsUrl.length > 0 && (
           <img src={`../../images/${imgsUrl[0]}`} alt="Ảnh" />

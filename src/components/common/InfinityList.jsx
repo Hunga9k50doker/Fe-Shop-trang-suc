@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import ReactPaginate from "react-paginate";
 import { ProductContext } from "../../provider/context/ProductContext";
 import { to_slug } from "../../utils/utils";
 import { CardItem } from "./CardItem";
